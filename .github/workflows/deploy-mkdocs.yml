@@ -22,7 +22,7 @@ jobs:
       run: |
         python build.py
         git config --global user.name "Astral Builder"
-        git config --global user.email "<>"
+        git config --global user.email "noreply@libjpel.so"
         git add jpellman_astral_repos.json
         git add jpellman_astral_tags.json
         git commit -m "Add cached processed data to the repository." || echo "No new processed data to cache."

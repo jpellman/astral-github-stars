@@ -58,7 +58,6 @@ for repoKey in astralData.keys():
             print("Doing reverse lookup for repo ID %s" % repoId)
             # Undocumented GitHub API call to get repo data from repo ID.
             # https://github.com/octokit/rest.js/issues/163
-            print("%s/%s" % (GITHUB_API_REPO_URL, repoId))
             repoRequest = requests.get("%s/%s" % (GITHUB_API_REPO_URL, repoId), auth=("token",OAUTH_TOKEN))
             repoJSON = json.loads(repoRequest.text)
             if "name" not in repoJSON.keys():
