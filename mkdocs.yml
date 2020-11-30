@@ -2,4 +2,4 @@ site_name: John Pellman's Curated GitHub Stars
 repo_url: https://github.com/jpellman/astral-github-stars
 site_description: John Pellman's GitHub stars, organized and curated by his various interests (neuroscience, systems administration, etc).
 site_author: John Pellman
-theme: bootstrap4
+theme: windmill

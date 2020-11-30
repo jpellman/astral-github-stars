@@ -1,7 +1,6 @@
 certifi==2020.11.8
 chardet==3.0.4
 click==7.1.2
-Deprecated==1.2.10
 future==0.18.2
 idna==2.10
 Jinja2==2.11.2
@@ -11,11 +10,8 @@ lunr==0.5.8
 Markdown==3.3.3
 MarkupSafe==1.1.1
 mkdocs==1.1.2
-mkdocs-bootstrap4==0.1.5
-mkdocs-git-committers-plugin==0.2.1
+mkdocs-windmill==1.0.4
 nltk==3.5
-PyGithub==1.53
-PyJWT==1.7.1
 PyYAML==5.3.1
 regex==2020.11.13
 requests==2.25.0
@@ -23,4 +19,3 @@ six==1.15.0
 tornado==6.1
 tqdm==4.54.0
 urllib3==1.26.2
-wrapt==1.12.1
