@@ -55,7 +55,7 @@ for repoKey in astralData.keys():
         repoId = str(astralData[repoKey]['repo_id'])
         if repoId not in repoIds.keys():
             repoIds[repoId] = {}
-            print("Doing reverse lookup for repo ID %d" % repoId)
+            print("Doing reverse lookup for repo ID %s" % repoId)
             # Undocumented GitHub API call to get repo data from repo ID.
             # https://github.com/octokit/rest.js/issues/163
             print("%s/%d" % (GITHUB_API_REPO_URL, repoId))
