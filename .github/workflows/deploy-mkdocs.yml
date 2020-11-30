@@ -1,0 +1,30 @@
+name: Build static site containing all Astral tags using MkDocs
+
+on: push
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Build and publish
+      run: |
+        python build.py
+        git add jpellman_astral_repos.json
+        git add jpellman_astral_tags.json
+        git commit -m "Add cached processed data to the repository." || echo "No new processed data to cache."
+        git push
+        mkdocs gh-deploy
+      env:
+        OAUTH_TOKEN: ${{ secrets.OAUTH_QUERY_TOKEN }}

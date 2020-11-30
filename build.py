@@ -44,7 +44,8 @@ for repoKey in astralData.keys():
     # We don't do unauthenticated API queries due to rate-limiting.
     # If using a personal OAUTH token, then there is a limit of 5000 queries per hour.
     if "OAUTH_TOKEN" not in os.environ:
-        sys.exit(1)
+        print("No OAUTH token.  Will not perform any further processing.")
+        break
     else:
         OAUTH_TOKEN = os.environ["OAUTH_TOKEN"]
     repoId = None
@@ -114,3 +115,16 @@ for tag in tags.keys():
                 continue
             else:
                 f.write("* [%s](%s)\n" % (repoIds[str(repoId)]["name"], repoIds[str(repoId)]["url"]))
+
+# Copy over index and CNAME.
+if os.path.exists("README.md"):
+    with open("README.md", "r") as f:
+        with open(os.path.join(DOCDIR,"index.md"), "w") as idx:
+            for line in f:
+                idx.write(line)
+
+if os.path.exists("CNAME"):
+    with open("CNAME", "r") as f:
+        with open(os.path.join(DOCDIR,"CNAME"), "w") as CNAME:
+            for line in f:
+                CNAME.write(line)
