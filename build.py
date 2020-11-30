@@ -108,6 +108,7 @@ if not os.path.exists(TAGDIR):
 for tag in tags.keys():
     TAGFILE = os.path.join(TAGDIR,"%s.md" % str(tag))
     with open(TAGFILE,'w') as f:
+        f.write("# %s\n\n" % str(tag))
         for repoId in tags[tag]:
             if "name" not in repoIds[str(repoId)].keys() or "url" not in repoIds[str(repoId)].keys():
                 continue
