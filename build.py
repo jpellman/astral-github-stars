@@ -70,6 +70,8 @@ for repoKey in astralData.keys():
                 repoIds[repoId]["url"] = repoJSON["homepage"]
             else:
                 continue
+            if "description" in repoJSON.keys():
+                repoIds[repoId]["description"] = repoJSON["description"]
     if 'tags' in astralData[repoKey].keys():
         for tag in astralData[repoKey]['tags']:
             if "name" not in tag.keys():
@@ -112,7 +114,10 @@ for tag in tags.keys():
             if "name" not in repoIds[str(repoId)].keys() or "url" not in repoIds[str(repoId)].keys():
                 continue
             else:
-                f.write("* [%s](%s)\n" % (repoIds[str(repoId)]["name"], repoIds[str(repoId)]["url"]))
+                if "description" in repoIds[str(repoId)].keys():
+                    f.write("* [%s](%s): %s\n" % (repoIds[str(repoId)]["name"], repoIds[str(repoId)]["url"], repoIds[str(repoId)]["description"]))
+                else:
+                    f.write("* [%s](%s)\n" % (repoIds[str(repoId)]["name"], repoIds[str(repoId)]["url"]))
 
 # Copy over index and CNAME.
 if os.path.exists("README.md"):
